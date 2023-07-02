@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>
+            Food Recommender Website
+        </title>
+    </head>
+
+    <body>
+        <h1>Welcome to Mealy Food Recommendation Engine</h1>
+
+        <form action="/recommend" method="POST">
+            <label>Enter in your preferred meal</label>
+            <input type="text" name="text"/>
+
+            <input type="submit">
+        </form>
+
+        {% if response != "": %}
+
+        <h2>
+            Your predictions are: {{response}}
+        </h2>
+
+        {% endif%}
+    </body>
+</hmtl>
