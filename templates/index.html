@@ -4,24 +4,158 @@
         <title>
             Food Recommender Website
         </title>
+
+        <style>
+            body {
+                line-height: 1.7em;
+                color: #7f8c8d;
+                font-size: 13px;
+                background-image: url({{ url_for ('static', filename = '/food.jpg') }});
+                background-size: contain;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            label {
+                color: #edf1f5;
+            }
+
+            .pure-img-responsive {
+                max-width: 100%;
+                height: auto;
+            }
+
+
+
+            .l-box {
+                padding: 1em;
+            }
+
+            .l-box-lrg {
+                padding: 2em;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .is-center {
+                text-align: center;
+            }
+
+
+
+            .pure-form label {
+                margin: 1em 0 0;
+                font-weight: bold;
+                font-size: 100%;
+            }
+
+            .pure-form input[type] {
+                border: 2px solid #ddd;
+                box-shadow: none;
+                font-size: 100%;
+                width: 100%;
+                margin-bottom: 1em;
+            }
+
+
+            .pure-button {
+                background-color: #1f8dd6;
+                color: white;
+                padding: 0.5em 2em;
+                border-radius: 5px;
+            }
+
+            a.pure-button-primary {
+                background: white;
+                color: #1f8dd6;
+                border-radius: 5px;
+                font-size: 120%;
+            }
+
+            .home-menu {
+                padding: 0.5em;
+                text-align: center;
+                box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+            }
+            .home-menu {
+                background: #2d3e50;
+            }
+            .pure-menu.pure-menu-fixed {
+                border-bottom: none;
+                z-index: 4;
+            }
+
+            .home-menu .pure-menu-heading {
+                color: white;
+                font-weight: 400;
+                font-size: 120%;
+            }
+
+            .home-menu .pure-menu-selected a {
+                color: white;
+            }
+
+            .home-menu a {
+                color: #6FBEF3;
+            }
+            .home-menu li a:hover,
+            .home-menu li a:focus {
+                background: none;
+                border: none;
+                color: #AECFE5;
+            }
+
+
+
+            .splash-subhead {
+                color: white;
+                letter-spacing: 0.05em;
+                opacity: 0.8;
+                padding-top: 50px;
+            }
+
+            .footer {
+                background: #111;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+        </style>
     </head>
 
     <body>
-        <h1>Welcome to Mealy Food Recommendation Engine</h1>
+        <div class="header">
+            <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+                <h1>Welcome to Mealy Food Recommendation Engine</h1>
+            </div>
+        </div>
 
-        <form action="/recommend" method="POST">
-            <label>Enter in your preferred meal</label>
-            <input type="text" name="text"/>
+        <div class="splash-subhead">
+            <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+                <form action="/recommend" method="POST">
+                    <label>Enter in your preferred meal</label>
+                    <input type="text" name="text"/>
 
-            <input type="submit">
-        </form>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
 
-        {% if response != "": %}
+        <div class="footer">
+            <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+                {% if response != "": %}
 
-        <h2>
-            Your predictions are: {{response}}
-        </h2>
+                <h2>
+                    Your predictions are: {{response}}
 
-        {% endif%}
+                    {% endif%}
+                </h2>
+            </div>
+        </div>
+
     </body>
 </hmtl>
