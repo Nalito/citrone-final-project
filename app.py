@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static/')
 
 df1 = pd.read_csv("processed.csv")
 
@@ -24,9 +24,13 @@ def recommend():
     if request.method=='POST':
         query = str(request.form.get('text'))
 
-        out = recommender(query)
+        try:
+            out = recommender(query)
+        except KeyError:
+            out = "BBQ Chicken Wings with French Fries, Moi Moi (Steamed Bean Pudding), Donut, Chocolate Cake"
+
 
         return(render_template('index.html', response=out))
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
